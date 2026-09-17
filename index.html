@@ -3,142 +3,251 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SeizureAlert</title>
+
 <style>
   :root {
-    --bg: #0f1115;
-    --card: #171a21;
-    --accent: #e63946;
-    --accent-dark: #c1121f;
-    --text: #f1f1f1;
-    --muted: #9aa0ab;
+    --primary: #2e6385;
+    --primary-dark: #234d69;
+    --background: #f5f5f5;
+    --card: #ffffff;
+    --text: #2f2f2f;
+    --muted: #6f7782;
+    --border: #d9e0e5;
   }
-  * { box-sizing: border-box; }
+
+  * {
+    box-sizing: border-box;
+  }
+
   body {
     margin: 0;
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-    background: radial-gradient(circle at top, #1a1e27, var(--bg));
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
     color: var(--text);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
+    padding: 48px 20px;
   }
-  .logo {
-    width: 84px;
-    height: 84px;
-    border-radius: 22px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 40px;
-    margin-bottom: 18px;
-    box-shadow: 0 8px 24px rgba(230,57,70,0.35);
-  }
-  h1 {
-    margin: 0 0 6px;
-    font-size: 28px;
-    letter-spacing: 0.5px;
-  }
-  .tagline {
-    color: var(--muted);
+
+  .header {
     text-align: center;
-    max-width: 420px;
-    margin-bottom: 36px;
-    font-size: 15px;
+    margin-bottom: 34px;
   }
-  .card {
-    background: var(--card);
-    border: 1px solid #262b35;
-    border-radius: 16px;
-    padding: 28px;
-    width: 100%;
-    max-width: 420px;
-    margin-bottom: 20px;
-  }
-  .card h2 {
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--muted);
-    margin: 0 0 16px;
-  }
-  a.btn {
+
+  .logo {
+    width: 82px;
+    height: 82px;
+    border-radius: 20px;
+    background-color: var(--primary);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    font-size: 38px;
+    margin: 0 auto 18px;
+    box-shadow: 0 8px 20px rgba(46, 99, 133, 0.18);
+  }
+
+  h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: var(--primary);
+  }
+
+  .tagline {
+    margin: 0;
+    max-width: 520px;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 460px;
+  }
+
+  .card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  }
+
+  .card h2 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    color: var(--primary);
+  }
+
+  .card-description {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
     text-decoration: none;
     padding: 14px 18px;
-    border-radius: 10px;
-    font-weight: 600;
+    border-radius: 8px;
     font-size: 15px;
-    margin-bottom: 12px;
-    transition: transform 0.15s ease, opacity 0.15s ease;
+    font-weight: bold;
+    transition: 0.2s ease;
   }
-  a.btn:last-child { margin-bottom: 0; }
-  a.btn:hover { transform: translateY(-2px); }
-  .btn-web {
-    background: #2b6cff;
-    color: white;
+
+  .btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.92;
   }
-  .btn-apk {
-    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-    color: white;
+
+  .btn-primary {
+    background-color: var(--primary);
+    color: #ffffff;
   }
+
+  .btn-secondary {
+    background-color: #ffffff;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+  }
+
   .note {
+    margin-top: 14px;
     font-size: 13px;
     color: var(--muted);
     line-height: 1.6;
-    margin-top: 6px;
   }
+
   .steps {
-    margin: 12px 0 0;
-    padding-left: 18px;
-    font-size: 13px;
+    margin: 14px 0 0;
+    padding-left: 20px;
     color: var(--muted);
+    font-size: 13px;
     line-height: 1.7;
   }
-  footer {
+
+  .steps strong {
+    color: var(--text);
+  }
+
+  .warning {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-left: 4px solid var(--primary);
+    background-color: #f1f6f9;
+    font-size: 13px;
     color: var(--muted);
+    line-height: 1.6;
+  }
+
+  footer {
+    margin-top: 24px;
     font-size: 12px;
-    margin-top: 20px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+    body {
+      padding: 32px 16px;
+    }
+
+    .card {
+      padding: 22px;
+    }
+
+    h1 {
+      font-size: 27px;
+    }
   }
 </style>
 </head>
+
 <body>
 
-  <div class="logo">🧠</div>
-  <h1>SeizureAlert</h1>
-  <p class="tagline">IoT-based wearable seizure detection and emergency alert system.</p>
+  <div class="header">
+    <div class="logo">⚕</div>
 
-  <div class="card">
-    <h2>Web App</h2>
-    <a class="btn btn-web" href="https://seizurealert.flutterflow.app" target="_blank" rel="noopener">
-      🌐 Try Web App
-    </a>
-    <p class="note">Opens in your browser — best on desktop or as an installed PWA on mobile.</p>
-  </div>
+    <h1>SeizureAlert</h1>
 
-  <div class="card">
-    <h2>Android App</h2>
-    <a class="btn btn-apk" href="#" id="apk-link" target="_blank" rel="noopener">
-      ⬇️ Download APK
-    </a>
-    <p class="note">
-      Android will warn about "unknown source" — this is expected for apps outside the Play Store.
+    <p class="tagline">
+      Intelligent personal safety monitoring platform designed to support
+      seizure event monitoring and caregiver alerts.
     </p>
-    <ol class="steps">
-      <li>Download the APK above.</li>
-      <li>Open the file, tap <strong>Install anyway</strong> if prompted.</li>
-      <li>If blocked, go to <strong>Settings → Apps → Install unknown apps</strong>, enable it for your browser/file manager.</li>
-      <li>Open SeizureAlert once installed.</li>
-    </ol>
   </div>
 
-  <footer>SeizureAlert · Capstone Project</footer>
+  <div class="container">
+
+    <div class="card">
+      <h2>SeizureAlert Web App</h2>
+
+      <p class="card-description">
+        Access SeizureAlert directly from your browser to manage your account,
+        review alerts, and use the available monitoring features.
+      </p>
+
+      <a
+        class="btn btn-primary"
+        href="https://seizurealert.flutterflow.app"
+        target="_blank"
+        rel="noopener noreferrer">
+        Open Web App
+      </a>
+
+      <p class="note">
+        Recommended for desktop browsers. Mobile users may also access the web
+        version directly through their browser.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>SeizureAlert Android App</h2>
+
+      <p class="card-description">
+        Download the Android application to use SeizureAlert on a compatible
+        Android device.
+      </p>
+
+      <a
+        class="btn btn-secondary"
+        href="#"
+        id="apk-link">
+        Download Android APK
+      </a>
+
+      <div class="warning">
+        Because this application is distributed for testing and academic use
+        outside the Google Play Store, Android may ask for permission before
+        installation.
+      </div>
+
+      <ol class="steps">
+        <li>Download the SeizureAlert APK file.</li>
+        <li>Open the downloaded file on your Android device.</li>
+        <li>
+          If prompted, allow your browser or file manager to install apps from
+          this source.
+        </li>
+        <li>Tap <strong>Install</strong> and wait for the installation to finish.</li>
+        <li>Open SeizureAlert after installation.</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <footer>
+    SeizureAlert · Capstone Project
+  </footer>
 
 </body>
 </html>
