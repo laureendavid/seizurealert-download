@@ -15,6 +15,7 @@
     --text: #2f2f2f;
     --muted: #6f7782;
     --border: #d9e0e5;
+    --light-primary: #f1f6f9;
   }
 
   * {
@@ -144,10 +145,72 @@
     margin-top: 16px;
     padding: 12px 14px;
     border-left: 4px solid var(--primary);
-    background-color: #f1f6f9;
+    background-color: var(--light-primary);
     font-size: 13px;
     color: var(--muted);
     line-height: 1.6;
+  }
+
+  /* QR SECTION */
+  .qr-section {
+    text-align: center;
+  }
+
+  .qr-image-container {
+    margin: 20px auto;
+    width: 100%;
+    max-width: 290px;
+    background-color: #ffffff;
+    padding: 16px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+  }
+
+  .qr-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  .qr-label {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  .activation-box {
+    margin-top: 18px;
+    padding: 16px;
+    background-color: var(--light-primary);
+    border-radius: 10px;
+    text-align: left;
+  }
+
+  .activation-title {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .activation-box p {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  .role-badge {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    background-color: var(--primary);
+    color: #ffffff;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
   }
 
   footer {
@@ -169,13 +232,19 @@
     h1 {
       font-size: 27px;
     }
+
+    .qr-image-container {
+      max-width: 250px;
+    }
   }
 </style>
 </head>
 
 <body>
 
+  <!-- HEADER -->
   <div class="header">
+
     <div class="logo">⚕</div>
 
     <h1>SeizureAlert</h1>
@@ -184,19 +253,169 @@
       Intelligent personal safety monitoring platform designed to support
       seizure event monitoring and caregiver alerts.
     </p>
+
   </div>
+
 
   <div class="container">
 
+    <!-- ANDROID APP -->
     <div class="card">
-      <h2>SeizureAlert Web App</h2>
+
+      <h2>SeizureAlert Android App</h2>
 
       <p class="card-description">
-        The SeizureAlert Web App is recommended primarily for caregivers.
+        Download the SeizureAlert Android application to access the full
+        set of mobile features, including wearer device activation,
+        QR scanning, Bluetooth connectivity, and wearable monitoring.
       </p>
 
       <a
         class="btn btn-primary"
+        href="./SeizureAlert.apk"
+        download="SeizureAlert.apk">
+        Download Android APK
+      </a>
+
+      <div class="warning">
+        Because this application is distributed for testing and academic
+        use outside the Google Play Store, Android may ask for permission
+        before installation.
+      </div>
+
+      <ol class="steps">
+
+        <li>
+          Download the SeizureAlert APK file.
+        </li>
+
+        <li>
+          Open the downloaded file on your Android device.
+        </li>
+
+        <li>
+          If prompted, allow your browser or file manager to install
+          apps from this source.
+        </li>
+
+        <li>
+          Tap <strong>Install</strong> and wait for the installation
+          to finish.
+        </li>
+
+        <li>
+          Open SeizureAlert after installation.
+        </li>
+
+      </ol>
+
+    </div>
+
+
+    <!-- WEARER DEVICE ACTIVATION -->
+    <div class="card qr-section">
+
+      <span class="role-badge">
+        For Wearers
+      </span>
+
+      <h2>Activate Your SeizureAlert Device</h2>
+
+      <p class="card-description">
+        Scan the QR code below using the SeizureAlert Android application
+        to activate your wearer account and link it with the
+        SeizureAlert wearable device.
+      </p>
+
+
+      <div class="qr-image-container">
+
+        <img
+          src="seizurealertQrScan.jpeg"
+          alt="SeizureAlert Wearer Device Activation QR Code"
+          class="qr-image">
+
+        <div class="qr-label">
+          SeizureAlert Device Activation QR
+        </div>
+
+      </div>
+
+
+      <div class="activation-box">
+
+        <p class="activation-title">
+          How to activate your device
+        </p>
+
+        <p>
+          Sign in to the SeizureAlert Android application using your
+          <strong>Wearer account</strong>. Open the device QR scanner
+          and scan the QR code shown above.
+        </p>
+
+      </div>
+
+
+      <ol class="steps" style="text-align: left;">
+
+        <li>
+          Download and install the
+          <strong>SeizureAlert Android App</strong>.
+        </li>
+
+        <li>
+          Register or sign in using your
+          <strong>Wearer account</strong>.
+        </li>
+
+        <li>
+          Open the <strong>device QR scanner</strong>
+          inside the SeizureAlert application.
+        </li>
+
+        <li>
+          Scan the SeizureAlert device QR code shown above.
+        </li>
+
+        <li>
+          Wait for the application to confirm successful activation.
+        </li>
+
+        <li>
+          Connect to the
+          <strong>Seizure Alert</strong>
+          wearable device when prompted.
+        </li>
+
+      </ol>
+
+
+      <div class="warning">
+
+        <strong>Important:</strong>
+        This QR code is for wearer device activation only.
+        Caregiver connections are managed separately inside
+        the SeizureAlert application.
+
+      </div>
+
+    </div>
+
+
+    <!-- WEB APP -->
+    <div class="card">
+
+      <h2>SeizureAlert Web App</h2>
+
+      <p class="card-description">
+        The SeizureAlert Web App is recommended primarily for caregivers
+        who need to monitor their connected wearer's alerts,
+        monitoring information, and available system features.
+      </p>
+
+      <a
+        class="btn btn-secondary"
         href="https://seizurealert.flutterflow.app"
         target="_blank"
         rel="noopener noreferrer">
@@ -204,45 +423,15 @@
       </a>
 
       <p class="note">
-        Some wearer features, such as device QR scanning and Bluetooth
-        connectivity, require the Android app and are not available on the web.
-      </p>
-    </div>
-
-    <div class="card">
-      <h2>SeizureAlert Android App</h2>
-
-      <p class="card-description">
-        Download the SeizureAlert Android application to access the full set
-        of mobile features on a compatible Android device.
+        Some wearer features, including device activation, QR scanning,
+        and Bluetooth connectivity, require the SeizureAlert Android
+        application and are not available through the web version.
       </p>
 
-      <a
-        class="btn btn-secondary"
-        href="#"
-        id="apk-link">
-        Download Android APK
-      </a>
-
-      <div class="warning">
-        Because this application is distributed for testing and academic use
-        outside the Google Play Store, Android may ask for permission before
-        installation.
-      </div>
-
-      <ol class="steps">
-        <li>Download the SeizureAlert APK file.</li>
-        <li>Open the downloaded file on your Android device.</li>
-        <li>
-          If prompted, allow your browser or file manager to install apps from
-          this source.
-        </li>
-        <li>Tap <strong>Install</strong> and wait for the installation to finish.</li>
-        <li>Open SeizureAlert after installation.</li>
-      </ol>
     </div>
 
   </div>
+
 
   <footer>
     SeizureAlert · Capstone Project
